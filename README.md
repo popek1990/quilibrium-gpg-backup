@@ -13,7 +13,6 @@
 
 `sudo apt install git`
 
-
 **###   Configure rclone with OneDrive   ###**
 
 **Start rclone configuration:**
@@ -35,7 +34,7 @@ _You should see a list of your OneDrive folders._
 
 **###   Download the backup script   ###**
 
-`git clone https://github.com/yourusername/backup-script.git`
+`git clone https://github.com/popek1990/backup-script.git`
 
 `cd quilibrium-gpg-backup`
 
