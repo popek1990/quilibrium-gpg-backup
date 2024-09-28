@@ -52,8 +52,9 @@ _You should see a list of your OneDrive folders._
 
 At the top of the script, you will find the USER CONFIGURATION section. Update the following variables:
 
-```############################################
-# USER CONFIGURATION - EDIT THESE VARIABLES
+```
+############################################
+▫️ USER CONFIGURATION - EDIT THESE VARIABLES 
 ############################################
 
 # Base directory where the items to backup are located
@@ -69,9 +70,10 @@ REMOTE_NAME="onedrive"  # <-- Set your rclone remote name (`rclone listremotes`)
 REMOTE_DIR="backup-folder"  # <-- Set the remote directory path
 
 ############################################
-# END OF USER CONFIGURATION
+▫️        END OF USER CONFIGURATION         ▫️
 ############################################
 ```
+
 `BASE_DIR:` Change this to the directory containing the files you want to back up.
 
 `GPG_KEYS:` Replace `YOUR_GPG_KEY_ID` with your GPG key ID(s).
