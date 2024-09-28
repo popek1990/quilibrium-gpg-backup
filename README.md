@@ -91,15 +91,29 @@ REMOTE_DIR="backup-folder"  # <-- Set the remote directory path
 
 **Add the following line:**
 
-`0 2 * * * /path/to/backup.sh >> /var/log/backup.log 2>&1`
+```SHELL=/bin/bash
+PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+HOME=/path/to/your/home/directory
 
-_Replace `/path/to/backup.sh` with the actual path to your backup script._
+# Cron jobs
+00 21 * * * /path/to/quil-backup.sh >> /path/to/backup.log 2>&1
+```
+
 
 **Notes:**
 
-- Ensure that your GPG keys are properly managed and secured.
-- The script uses pigz for faster compression. If not installed, it will use gzip.
-- The backup file is named with the current date: backup_YYYY-MM-DD.tar.gz.gpg
+- Replace `/path/to/your/home/directory` with the path to your actual home directory. For example, /home/yourusername.
+- Replace `/path/to/quil-backup.sh` with the full path to the quil-backup.sh script on your system.
+- Replace `/path/to/backup.log` with the path where you want the backup log to be stored, typically in your home directory.
+- **Save** and Exit the Crontab Editor
+  
+_This configuration sets up the cron environment variables and schedules the backup script to run every day at **21:00** (9:00 PM)_
+
+**Notes:**
+
+- Ensure that your `GPG keys` are properly managed and secured! 🔑
+- The script uses pigz for faster compression. If not installed, it will use `gzip`.
+- The backup file is named with the current date: `backup_YYYY-MM-DD-TIME.tar.gz.gpg`
 
 
 By [popek1990.eth]([url](https://x.com/popek_1990))
