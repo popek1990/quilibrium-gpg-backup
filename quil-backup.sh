@@ -4,7 +4,7 @@ LOG_FILE="$HOME/backup.log"
 echo "Backup started at $(date)" >> "$LOG_FILE"
 
 # Redirect all output to the log file
-exec >> "$LOG_FILE" 2>&1
+exec > >(tee -a "$LOG_FILE") 2>&1
 
 REQUIRED_CMDS=("rclone" "gpg" "tar")
 for cmd in "${REQUIRED_CMDS[@]}"; do
