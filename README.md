@@ -1,8 +1,11 @@
+![image](https://github.com/user-attachments/assets/55865df4-9eb7-4924-bb72-a8f23702a2da)
+
+
 **###   Install Required Tools    ###**
 
 `sudo apt update`
 
-`sudo apt install rclone`
+`curl https://rclone.org/install.sh | sudo bash`
 
 `sudo apt install gnupg`
 
@@ -61,7 +64,7 @@ BASE_DIR="/home/user/ceremonyclient/node/.config"  # <-- Change this to your bas
 GPG_KEYS=("YOUR_GPG_KEY_ID")  # <-- Replace with your GPG key IDs
 
 # Name of the remote connection in rclone
-REMOTE_NAME="onedrive"  # <-- Set your rclone remote name
+REMOTE_NAME="onedrive"  # <-- Set your rclone remote name (`rclone listremotes`)
 
 # Path to the folder on OneDrive
 REMOTE_DIR="backup-folder"  # <-- Set the remote directory path
@@ -80,7 +83,7 @@ REMOTE_DIR="backup-folder"  # <-- Set the remote directory path
 
 **###   Run the backup script   ###**
 
-`./backup.sh`
+`./quil-backup.sh`
 
 **### Automate the Backup (Optional) ###**
 
@@ -101,6 +104,10 @@ _Replace `/path/to/backup.sh` with the actual path to your backup script._
 
 
 By [popek1990.eth]([url](https://x.com/popek_1990))
+
+![image](https://github.com/user-attachments/assets/88d77576-6bcb-4877-b603-e067f2da81dd)
+
+
 
 
 
