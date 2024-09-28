@@ -1,4 +1,19 @@
 #!/bin/bash
+
+LOG_FILE="$HOME/backup.log"
+echo "Backup started at $(date)" >> "$LOG_FILE"
+
+# Redirect all output to the log file
+exec >> "$LOG_FILE" 2>&1
+
+REQUIRED_CMDS=("rclone" "gpg" "tar")
+for cmd in "${REQUIRED_CMDS[@]}"; do
+  if ! command -v "$cmd" >/dev/null 2>&1; then
+    echo "Error: $cmd is not installed." >&2
+    exit 1
+  fi
+done
+
 set -euo pipefail
 trap 'rm -f "$BACKUP_FILE" "$ENCRYPTED_BACKUP_FILE"' EXIT
 
@@ -7,23 +22,31 @@ trap 'rm -f "$BACKUP_FILE" "$ENCRYPTED_BACKUP_FILE"' EXIT
 ############################################
 
 # Base directory where the items to backup are located
-BASE_DIR="/home/user/ceremonyclient/node/.config"  # <-- Change this to your base directory
+BASE_DIR="$HOME/ceremonyclient/node/.config"  # <-- Change this to your base directory
 
 # Items to backup (relative to BASE_DIR)
 BACKUP_ITEMS=("store" "keys.yml" "config.yml")     # <-- Add or remove items as needed
 
 # Your GPG key IDs (public keys of recipients)
-GPG_KEYS=("9716963681F2BBD10414A4DB3AC3FCCE54124D1A")  # <-- Replace with your GPG key IDs
+GPG_KEYS=("YOUR_GPG_KEY_ID_HERE")  # <-- Replace with your GPG key IDs
 
 # Name of the remote connection in rclone
-REMOTE_NAME="quil-onedrive"                               # <-- Set your rclone remote name
+REMOTE_NAME="quil-onedrive"  # <-- Set your rclone remote name
 
 # Path to the folder on OneDrive
-REMOTE_DIR="quil-backup/1"                           # <-- Set the remote directory path
+REMOTE_DIR="quil-backup/1"  # <-- Set the remote directory path
 
 ############################################
 # END OF USER CONFIGURATION
 ############################################
+
+# Check if GPG keys are available
+for key in "${GPG_KEYS[@]}"; do
+  if ! gpg --list-keys "$key" >/dev/null 2>&1; then
+    echo "Error: GPG key $key not found in keyring." >&2
+    exit 1
+  fi
+done
 
 # Check if the base directory exists
 if [ ! -d "$BASE_DIR" ]; then
@@ -31,8 +54,12 @@ if [ ! -d "$BASE_DIR" ]; then
   exit 1
 fi
 
-# Path to the backup archive file (with date)
-BACKUP_FILE="/tmp/backup_$(date +'%Y-%m-%d').tar.gz"
+# Generate date and time for filenames
+CURRENT_DATE=$(date +'%Y-%m-%d')
+CURRENT_TIME=$(date +'%H-%M')
+
+# Path to the backup archive file (with date and time)
+BACKUP_FILE="/tmp/backup_${CURRENT_DATE}_${CURRENT_TIME}.tar.gz"
 
 # Encrypted backup file
 ENCRYPTED_BACKUP_FILE="${BACKUP_FILE}.gpg"
@@ -67,6 +94,12 @@ else
   exit 1
 fi
 
+# Remove the local backup files
+rm -f "$BACKUP_FILE" "$ENCRYPTED_BACKUP_FILE"
+
+echo "Backup finished at $(date)" >> "$LOG_FILE"
+
 #############################################################################################
 ### A Bash script for encrypted backups to OneDrive using rclone and GPG by popek1990.eth ###
 #############################################################################################
+
