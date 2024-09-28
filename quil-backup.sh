@@ -16,7 +16,7 @@ BACKUP_ITEMS=("store" "keys.yml" "config.yml")     # <-- Add or remove items as 
 GPG_KEYS=("9716963681F2BBD10414A4DB3AC3FCCE54124D1A")  # <-- Replace with your GPG key IDs
 
 # Name of the remote connection in rclone
-REMOTE_NAME="onedrive"                               # <-- Set your rclone remote name
+REMOTE_NAME="quil-onedrive"                               # <-- Set your rclone remote name
 
 # Path to the folder on OneDrive
 REMOTE_DIR="quil-backup/1"                           # <-- Set the remote directory path
