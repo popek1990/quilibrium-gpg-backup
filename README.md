@@ -34,7 +34,7 @@ _You should see a list of your OneDrive folders._
 
 **###   Download the backup script   ###**
 
-`git clone https://github.com/popek1990/backup-script.git`
+`git clone https://github.com/popek1990/quilibrium-gpg-backup`
 
 `cd quilibrium-gpg-backup`
 
