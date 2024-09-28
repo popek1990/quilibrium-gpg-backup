@@ -26,7 +26,7 @@
 
 **Test the connection:**
 
-`rclone lsd onedrive:`
+`rclone lsd quil-ondrive:`   #quil-ondrive = yours rclone remote connection name
 
 _You should see a list of your OneDrive folders._
 
