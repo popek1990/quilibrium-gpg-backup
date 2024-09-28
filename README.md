@@ -34,9 +34,9 @@ _You should see a list of your OneDrive folders._
 
 `git clone https://github.com/yourusername/backup-script.git`
 
-`cd backup-script`
+`cd quilibrium-gpg-backup`
 
-`chmod +x backup.sh`
+`chmod +x quil-backup.sh`
 
 **###   Create or import GPG keys   ###**
 
@@ -46,7 +46,7 @@ _You should see a list of your OneDrive folders._
 
 **###   Edit the script configuration   ###**
 
-`nano backup.sh`
+`nano quil-backup.sh`
 
 At the top of the script, you will find the USER CONFIGURATION section. Update the following variables:
 
