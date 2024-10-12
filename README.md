@@ -89,7 +89,7 @@ REMOTE_DIR="backup-folder"  # <-- Set the remote directory path
 **### Automate the Backup (Optional) ###**
 
 **Edit the crontab:**
-`crontab -e`
+`nano crontab -e`
 
 **Add the following line:**
 
@@ -99,6 +99,10 @@ HOME=/path/to/your/home/directory
 
 # Cron jobs
 00 21 * * * /path/to/quil-backup.sh >> /path/to/backup.log 2>&1
+
+### `quil-backup.sh` - you can check where is via `find / -name quil-backup.sh 2>/dev/null`
+### `/home/path` you can check via `echo $HOME` or `pwd`
+
 ```
 
 
