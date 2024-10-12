@@ -89,7 +89,7 @@ REMOTE_DIR="backup-folder"  # <-- Set the remote directory path
 **### Automate the Backup (Optional) ###**
 
 **Edit the crontab:**
-`nano crontab -e`
+`crontab -e`
 
 **Add the following line:**
 
