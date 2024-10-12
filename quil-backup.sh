@@ -97,7 +97,10 @@ fi
 # Remove the local backup files
 rm -f "$BACKUP_FILE" "$ENCRYPTED_BACKUP_FILE"
 
-echo "Backup finished at $(date)" >> "$LOG_FILE"
+echo "Backup successfully finished at $(date +'%Y-%m-%d %H')" >> "$LOG_FILE"
+
+
+
 
 #############################################################################################
 ### A Bash script for encrypted backups to OneDrive using rclone and GPG by popek1990.eth ###
